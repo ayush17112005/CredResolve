@@ -336,19 +336,6 @@ The collection includes:
 - Balance calculation verification
 - Settlement flow testing
 - Error case validation
-
-### Manual Testing
-
-```bash
-# Health check
-curl http://localhost:3000/health
-
-# Create user
-curl -X POST http://localhost:3000/api/users \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Test User","email":"test@example. com"}'
-```
-
 ---
 
 ## 🔑 Key Business Logic
