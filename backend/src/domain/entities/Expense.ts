@@ -9,10 +9,10 @@ export class Expense{
     category: ExpenseCategory;
     paidBy: string; //userId
     splitType: SplitType;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date | undefined;
+    updatedAt?: Date | undefined;
 
-    constructor(id: string, groudId: string, description: string, amount: number, category: ExpenseCategory, paidBy: string, splitType: SplitType, createdAt: Date, updatedAt: Date){
+    constructor(id: string, groudId: string, description: string, amount: number, category: ExpenseCategory, paidBy: string, splitType: SplitType, createdAt?: Date, updatedAt?: Date){
         this.id = id;
         this.groupId = groudId;
         this.description = description;

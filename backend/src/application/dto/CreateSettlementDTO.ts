@@ -3,6 +3,8 @@ export interface CreateSettlementDTO {
   paidBy: string; // User ID who is paying
   paidTo: string; // User ID who is receiving
   amount: number;
+  settlementDate: Date;
+  createdAt?: Date | undefined;
 }
 
 export interface SettlementResponseDTO {

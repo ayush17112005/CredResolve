@@ -25,12 +25,11 @@ export interface ExpenseResponseDTO {
   category: ExpenseCategory;
   paidBy: string;
   splitType: SplitType;
-  expenseDate: Date;
   splits: ExpenseSplitResponseDTO[];
 }
 
 export interface ExpenseSplitResponseDTO {
   userId: string;
   amount: number;
-  percentage?:  number;
+  percentage?:  number | undefined;
 }

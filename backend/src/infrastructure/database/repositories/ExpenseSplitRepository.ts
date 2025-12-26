@@ -14,12 +14,12 @@ export class ExpenseSplitRepository implements IExpenseSplitRepository {
 
   async createMany(splits: ExpenseSplit[]): Promise<ExpenseSplit[]> {
     const splitModels = ExpenseSplitMapper.toModelList(splits);
-    const savedModels = await this.repository. save(splitModels);
-    return ExpenseSplitMapper. toDomainList(savedModels);
+    const savedModels = await this.repository.save(splitModels);
+    return ExpenseSplitMapper.toDomainList(savedModels);
   }
 
   async findByExpenseId(expenseId: string): Promise<ExpenseSplit[]> {
-    const splitModels = await this.repository. find({
+    const splitModels = await this.repository.find({
       where: { expenseId },
     });
     return ExpenseSplitMapper.toDomainList(splitModels);

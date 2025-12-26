@@ -1,13 +1,13 @@
 export interface CreateGroupDTO {
   name: string;
-  description?: string;
+  description?: string | undefined;
   createdBy: string; // User ID
 }
 
 export interface GroupResponseDTO {
   id: string;
   name: string;
-  description?: string;
+  description?: string | undefined;
   createdBy: string;
   createdAt: Date;
 }

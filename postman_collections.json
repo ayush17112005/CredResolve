@@ -1,0 +1,574 @@
+{
+  "info": {
+    "name": "Expense Sharing API",
+    "description": "Complete API collection for testing the Expense Sharing backend application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "user1_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user2_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user3_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "group_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "expense_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item":  [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name":  "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host":  ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User 1 (Aditya)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm. collectionVariables.set('user1_id', jsonData. data.id);",
+                  "    console.log('User 1 ID:', jsonData.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Aditya Kumar\",\n  \"email\": \"aditya@example. com\",\n  \"phone\": \"+91-9876543210\"\n}"
+            },
+            "url":  {
+              "raw": "{{baseUrl}}/api/users",
+              "host":  ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Create User 2 (Rahul)",
+          "event": [
+            {
+              "listen":  "test",
+              "script":  {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('user2_id', jsonData.data. id);",
+                  "    console.log('User 2 ID:', jsonData.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method":  "POST",
+            "header":  [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rahul Sharma\",\n  \"email\":  \"rahul@example.com\",\n  \"phone\":  \"+91-9876543211\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User 3 (Priya)",
+          "event": [
+            {
+              "listen":  "test",
+              "script":  {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('user3_id', jsonData.data. id);",
+                  "    console.log('User 3 ID:', jsonData.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method":  "POST",
+            "header":  [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Priya Singh\",\n  \"email\": \"priya@example.com\",\n  \"phone\": \"+91-9876543212\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{user1_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{user1_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "Create Group (Goa Trip)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response. code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set('group_id', jsonData.data.id);",
+                  "    console. log('Group ID:', jsonData. data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Goa Trip 2024\",\n  \"description\": \"Epic beach vacation with college friends\",\n  \"createdBy\": \"{{user1_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Group by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}",
+              "host":  ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Add Member 2 (Rahul) to Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key":  "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode":  "raw",
+              "raw":  "{\n  \"userId\":  \"{{user2_id}}\"\n}"
+            },
+            "url": {
+              "raw":  "{{baseUrl}}/api/groups/{{group_id}}/members",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "members"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Add Member 3 (Priya) to Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key":  "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode":  "raw",
+              "raw":  "{\n  \"userId\":  \"{{user3_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/members",
+              "host":  ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "members"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Expenses",
+      "item": [
+        {
+          "name":  "Create Expense - EQUAL Split",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key":  "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode":  "raw",
+              "raw":  "{\n  \"description\": \"Dinner at Beach Shack\",\n  \"amount\": 3000,\n  \"category\": \"FOOD\",\n  \"paidBy\": \"{{user1_id}}\",\n  \"splitType\": \"EQUAL\",\n  \"participants\": [\n    { \"userId\": \"{{user1_id}}\" },\n    { \"userId\": \"{{user2_id}}\" },\n    { \"userId\": \"{{user3_id}}\" }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Expense - EXACT Split",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value":  "application/json"
+              }
+            ],
+            "body":  {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Hotel Booking\",\n  \"amount\": 6000,\n  \"category\": \"RENT\",\n  \"paidBy\": \"{{user2_id}}\",\n  \"splitType\": \"EXACT\",\n  \"participants\": [\n    { \"userId\": \"{{user1_id}}\", \"amount\": 2500 },\n    { \"userId\": \"{{user2_id}}\", \"amount\": 2000 },\n    { \"userId\": \"{{user3_id}}\", \"amount\": 1500 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Create Expense - PERCENTAGE Split",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value":  "application/json"
+              }
+            ],
+            "body":  {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Cab Ride to Airport\",\n  \"amount\": 1200,\n  \"category\": \"TRAVEL\",\n  \"paidBy\": \"{{user3_id}}\",\n  \"splitType\": \"PERCENTAGE\",\n  \"participants\": [\n    { \"userId\": \"{{user1_id}}\", \"percentage\": 40 },\n    { \"userId\": \"{{user2_id}}\", \"percentage\": 35 },\n    { \"userId\": \"{{user3_id}}\", \"percentage\": 25 }\n  ]\n}"
+            },
+            "url": {
+              "raw":  "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Get Group Expenses",
+          "request":  {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Balances",
+      "item": [
+        {
+          "name": "Get Group Balances",
+          "request":  {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/balances",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "balances"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Get User 1 Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/balances/user/{{user1_id}}",
+              "host":  ["{{baseUrl}}"],
+              "path": ["api", "balances", "user", "{{user1_id}}"]
+            }
+          },
+          "response":  []
+        },
+        {
+          "name": "Get User 2 Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/balances/user/{{user2_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "balances", "user", "{{user2_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User 3 Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/balances/user/{{user3_id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "balances", "user", "{{user3_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name":  "Settlements",
+      "item": [
+        {
+          "name": "Create Settlement (User 2 pays User 1)",
+          "request":  {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paidBy\": \"{{user2_id}}\",\n  \"paidTo\": \"{{user1_id}}\",\n  \"amount\": 1000\n}"
+            },
+            "url": {
+              "raw":  "{{baseUrl}}/api/groups/{{group_id}}/settlements",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "settlements"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Group Settlements",
+          "request":  {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/settlements",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "settlements"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Create User - Duplicate Email",
+          "request":  {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"aditya@example.com\",\n  \"phone\": \"+91-1111111111\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User - Invalid Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"invalid-email\",\n  \"phone\": \"+91-1111111111\"\n}"
+            },
+            "url": {
+              "raw":  "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Expense - EXACT Split Mismatch",
+          "request":  {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Test Invalid Split\",\n  \"amount\": 1000,\n  \"category\": \"FOOD\",\n  \"paidBy\": \"{{user1_id}}\",\n  \"splitType\": \"EXACT\",\n  \"participants\":  [\n    { \"userId\": \"{{user1_id}}\", \"amount\": 300 },\n    { \"userId\": \"{{user2_id}}\", \"amount\": 400 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Create Expense - PERCENTAGE Not 100",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Test Invalid Percentage\",\n  \"amount\": 1000,\n  \"category\": \"FOOD\",\n  \"paidBy\": \"{{user1_id}}\",\n  \"splitType\": \"PERCENTAGE\",\n  \"participants\":  [\n    { \"userId\": \"{{user1_id}}\", \"percentage\": 40 },\n    { \"userId\": \"{{user2_id}}\", \"percentage\": 30 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/groups/{{group_id}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "groups", "{{group_id}}", "expenses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name":  "Get Non-existent User",
+          "request": {
+            "method":  "GET",
+            "header":  [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/invalid-uuid-12345",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "invalid-uuid-12345"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
