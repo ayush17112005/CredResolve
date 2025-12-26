@@ -480,7 +480,7 @@ This project is for educational purposes.
 
 ## 👨‍💻 Author
 
-**Aditya**  
+**Ayushman Saxena**  
 Engineering Design Assignment
 
 ---
@@ -492,7 +492,3 @@ Engineering Design Assignment
 - Inspired by Splitwise
 
 ---
-
-## 📞 Support
-
-For issues or questions, please use GitHub Issues. 
